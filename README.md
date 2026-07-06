@@ -202,6 +202,21 @@ If possible, replace these to present interesting results from your custom proje
 
 ![Provide a Useful Caption](./docs/images/Figure_2.png)
 
+## Phase 4 Technical Modification
+
+I added a new Actual Scores vs Predicted Scores visualization to improve the evaluation of the regression model. The original project reported model performance metrics in the log, but I wanted to provide a visual comparison between the actual test scores and the model predictions.
+
+To support the new visualization, I modified the training workflow to return the test target values and predicted values. I then created a new plotting function that displays the actual scores against the predicted scores with a reference line for comparison.
+
+The new visualization shows that the predicted scores are very close to the actual scores for the test cases.
+
+### Run My Modified Project
+
+```shell
+uv run python -m mlstudio.app_abdel
+
+```
+
 ## Project Documentation
 
 Additional project instructions, terms, and notes:
