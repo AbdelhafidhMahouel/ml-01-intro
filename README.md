@@ -196,26 +196,78 @@ In your custom project, follow this example, but
 Remove unnecessary instructional comments in your custom files.
 
 These are from the example app used to test the .venv/.
-If possible, replace these to present interesting results from your custom project:
-
-![Provide a Useful Caption](./docs/images/Figure_1.png)
-
-![Provide a Useful Caption](./docs/images/Figure_2.png)
+If possible, replace these to present interesting results from your custom project.
 
 ## Phase 4 Technical Modification
 
-I added a new Actual Scores vs Predicted Scores visualization to improve the evaluation of the regression model. The original project reported model performance metrics in the log, but I wanted to provide a visual comparison between the actual test scores and the model predictions.
+For my technical modification, I created a copy of the original regression
+application and named it `app_abdel.py`. I added a new
+**Actual Scores vs Predicted Scores** visualization to improve the evaluation
+of the regression model.
 
-To support the new visualization, I modified the training workflow to return the test target values and predicted values. I then created a new plotting function that displays the actual scores against the predicted scores with a reference line for comparison.
+The original project reported model performance metrics in the project log,
+but I wanted to provide a visual comparison between the actual test scores and
+the model predictions.
 
-The new visualization shows that the predicted scores are very close to the actual scores for the test cases.
+To support the new visualization, I modified the training workflow to return
+the test target values and predicted values. I then created a new plotting
+function that displays the actual scores against the predicted scores with a
+reference line for comparison.
+
+The modified application successfully produced three charts instead of the
+two charts created by the original example. The new visualization shows that
+the predicted scores are very close to the actual scores for the test cases.
 
 ### Run My Modified Project
 
 ```shell
 uv run python -m mlstudio.app_abdel
-
 ```
+
+### Actual Scores vs Predicted Scores
+
+The new chart provides a visual comparison between the actual test scores and
+the scores predicted by the Linear Regression model. Points close to the
+reference line indicate that the model prediction is close to the actual value.
+
+![Actual Scores vs Predicted Scores](./docs/images/actual-vs-predicted-scores.png)
+
+## Phase 5: Student Performance Risk Classification
+
+For my custom machine learning project, I changed the problem from regression
+to classification. The provided example predicts a numeric student score,
+while my project classifies students as either **At Risk** or **On Track**.
+
+I used five features: hours studied, number of practice quizzes, attendance
+percentage, sleep hours, and prior score. The target variable is `risk_status`.
+
+I trained a Decision Tree Classifier and evaluated the model using accuracy,
+precision, recall, and F1-score. The model achieved 1.00 accuracy on the small
+test set. However, the dataset contains only 10 records, so this result should
+be interpreted as a demonstration of the classification workflow rather than
+evidence of production-level model performance.
+
+The model also predicted a new student case with 3 hours of study, 2 practice
+quizzes, 76% attendance, 6 hours of sleep, and a prior score of 59 as
+**At Risk**.
+
+### Run the Custom Project
+
+```shell
+uv run python -m mlstudio.student_risk_abdel
+```
+
+### Custom Project Result
+
+The Decision Tree Classifier successfully completed the classification
+workflow. The model achieved an accuracy of 1.00 on the small test set and
+predicted the new student case as **At Risk**.
+
+Because the dataset contains only 10 student records, this result is presented
+as a demonstration of supervised classification rather than a production-ready
+student risk prediction system.
+
+![Student Risk Classification Result](./docs/images/student-risk-classification.png)
 
 ## Project Documentation
 
